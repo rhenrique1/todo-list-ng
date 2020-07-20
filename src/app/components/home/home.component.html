@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <div class="row justify-content-center mb-3">
+    <div class="col-sm-4">
+      <a href="#" class="btn btn-block btn-success">Create Task</a>
+    </div>
+  </div>
+  <!-- if there are no tasks -->
+  <div class="row">
+    <div class="col-sm-12">
+      <ng-container >
+        <h3>
+          Nome da tarefa
+          <!-- task.name -->
+          <small>
+            | 10/06/2021: 
+            <!-- task.createdAt -->
+          </small>
+        </h3>
+        <p>
+          Descrição
+          <!-- task.description -->
+        </p>
+        <h4>
+          Data limite: 
+          <small>
+            11/06/2021
+            <!-- task.dueData -->
+          </small>
+        </h4>
+        <a href="#" class="btn btn-sm btn-primary">Editar</a> | 
+        <button type="submit" class="btn btn-sm btn-danger">Apagar</button>
+      </ng-container>
+    </div>
+  </div>
+  <hr>
+</div>
