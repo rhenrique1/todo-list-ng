@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+}
+
+/* Font Size */
+.fs-8 { font-size: 8px; }
+.fs-10 { font-size: 10px; }
+.fs-12 { font-size: 12px; }
+.fs-16 { font-size: 16px; }
+.fs-20 { font-size: 20px; }
+.fs-24 { font-size: 24px; }
+.fs-28 { font-size: 28px; }
+.fs-32 { font-size: 32px; }
+.fs-36 { font-size: 36px; }
+.fs-48 { font-size: 48px; }
+.fs-60 { font-size: 60px; }
+
+/* Font Weight */
+.fw-normal { font-weight: normal; }
+.fw-600 { font-weight: 600; }
+.fw-bold { font-weight: bold; }
+
+/* Margin */
+.mt-0 { margin-top: 0px }
+.mt-8 { margin-top: 8px }
+.mt-12 { margin-top: 12px }
+.mt-16 { margin-top: 16px }
+.mt-20 { margin-top: 20px }
+.mt-24 { margin-top: 24px }
+.mt-28 { margin-top: 28px }
+.mt-32 { margin-top: 32px }
+.mt-40 { margin-top: 40px }
+.mt-48 { margin-top: 48px }
+.mt-60 { margin-top: 60px }
+.mt-80 { margin-top: 80px }
+.mt-100 { margin-top: 100px }
+.mb-0 { margin-bottom: 0px; }
+.mb-8 { margin-bottom: 8px }
+.mb-12 { margin-bottom: 12px }
+.mb-16 { margin-bottom: 16px }
+.mb-20 { margin-bottom: 20px }
+.mb-24 { margin-bottom: 24px }
+.mb-32 { margin-bottom: 32px }
+.mb-40 { margin-bottom: 40px }
+.mb-48 { margin-bottom: 48px }
+.mb-60 { margin-bottom: 60px }
+.mb-80 { margin-bottom: 80px }
+.mb-100 { margin-bottom: 100px }
+
+/* Padding */
+
+.p-0 {
+  padding: 0;
+}
+
+/* Width % */
+.w-4 { width: 4%; }
+.w-6 { width: 6%; }
+.w-8 { width: 8%; }
+.w-10 { width: 10%; }
+.w-12 { width: 12%; }
+.w-14 { width: 14%; }
+.w-16 { width: 16%; }
+.w-20 { width: 20%; }
+.w-25 { width: 25%; }
+.w-33 { width: 33.3334%; }
+.w-34 { width: 34%;}
+.w-40 { width: 40%; }
+.w-50 { width: 50%; }
+.w-60 { width: 60%; }
+.w-66 { width: 66.6667%; }
+.w-70 { width: 70%; }
+.w-80 { width: 80%; }
+.w-90 { width: 90%; }
+
+table tr:hover{
+  cursor:pointer;
+}
+
+.color-white {
+  color: white;
+}
+
+.color-dark-red {
+  color: #CC4B34;
+}
