@@ -3,6 +3,6 @@ export interface Tarefa {
   nome: string;
   descricao: string;
   dataCriacao: Date;
-  dataLimite: Date;
+  limite: Date;
   status: boolean;
 }

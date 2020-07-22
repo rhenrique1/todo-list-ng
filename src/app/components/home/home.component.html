@@ -4,22 +4,17 @@
       <a class="btn btn-block btn-success" routerLink="nova-tarefa" routerLinkActive="router-link-active">Nova Tarefa</a>
     </div>
   </div>
-  <!-- if there are no tasks -->
-  <!-- <p-progressSpinner 
-    *ngIf="carregando"
-    [style]="{width: '50px', height: '50px'}" 
-    strokeWidth="6" 
-    fill="#EEEEEE"
-    animationDuration=".75s">
-  </p-progressSpinner> -->
-  <div class="row" *ngIf="!carregando">
+  <div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="row" *ngIf="!isLoading">
     <div class="col-sm-12">
       <ng-container *ngFor="let tarefa of tarefas">
         <h3>{{tarefa.nome}}<small> | {{tarefa.dataCriacao | date: 'dd/MM/yyyy'}}</small></h3>
         <p>
           {{tarefa.descricao}} 
         </p>
-        <h4>Data limite: <small>{{tarefa.dataLimite | date: 'dd/MM/yyyy'}}</small></h4>
+        <h4>Data limite: <small>{{tarefa.limite | date: 'dd/MM/yyyy'}}</small></h4>
         <a  
           class="btn btn-sm btn-primary"
           routerLink="editar-tarefa" routerLinkActive="router-link-active">

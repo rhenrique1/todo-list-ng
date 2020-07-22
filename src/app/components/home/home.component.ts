@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarefa } from 'src/app/shared/models/tarefa.model';
 import { TarefasService } from 'src/app/shared/services/tarefas.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { TarefasService } from 'src/app/shared/services/tarefas.service';
 export class HomeComponent implements OnInit {
 
   public tarefas: Tarefa[] = [];
-  public carregando: boolean = true;
+  public isLoading: boolean = true;
   
   constructor(private tarefasService: TarefasService) { }
 
@@ -19,13 +20,26 @@ export class HomeComponent implements OnInit {
   }
 
   initTarefas() {
-    this.tarefasService.getTarefas().subscribe(
+    this.tarefasService.getTarefas()
+    .pipe(
+      map(res => {
+        const tarefasArray = [];
+        for (const key in res) {
+          if (res.hasOwnProperty(key)) {
+            tarefasArray.push({ ...res[key] , id: key})
+          }
+        }
+        return tarefasArray;
+      })
+    )
+    .subscribe(
       res => {
         this.tarefas = res;
-        this.carregando = false;
+        console.log(res);
+        this.isLoading = false;
       }, err => {
         console.log(err);
-        this.carregando = false;
+        this.isLoading = false;
       }
     )
   }

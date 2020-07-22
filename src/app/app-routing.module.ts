@@ -16,8 +16,7 @@ const routes: Routes = [
     component: NovaTarefaComponent,
   },
   { 
-    //path: 'editar-tarefa/:id', 
-    path: 'editar-tarefa', 
+    path: 'editar-tarefa/:id', 
     component: EditarTarefaComponent,
   },
 ];

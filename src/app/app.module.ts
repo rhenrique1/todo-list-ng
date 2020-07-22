@@ -9,6 +9,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NovaTarefaComponent } from './components/tarefas/nova-tarefa/nova-tarefa.component';
 import { EditarTarefaComponent } from './components/tarefas/editar-tarefa/editar-tarefa.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavBarComponent,
     NovaTarefaComponent,
-    EditarTarefaComponent
+    EditarTarefaComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
