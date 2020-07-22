@@ -1,53 +1,68 @@
-<div class="row">
-  <div class="col-sm-12">
-    <h1>Create Task</h1>
-      <form >
-        <label 
-          for="nome-tarefa" 
-          class="control-label"
-          >Nome da Tarefa
-        </label>
-        <input 
-          type="text" 
-          class="form-control form-control-lg" 
-          id="nome-tarefa" 
-          placeholder="Nome da Tarefa"
-        >
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Create Task</h1>
+      <hr>  
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="onSalvarTarefa(form)">
+          <label 
+            for="nome-tarefa" 
+            class="control-label mt-3"
+            >Nome da Tarefa
+          </label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="nome-tarefa" 
+            name="nome"
+            ngModel
+            required
+          >
+          
+          <label 
+            for="nome-tarefa" 
+            class="control-label mt-3"
+            >Descrição da Tarefa
+          </label>
+          <textarea 
+            class="form-control" 
+            id="descr-tarefa" 
+            name="descricao"
+            ngModel
+            required
+          ></textarea>
         
-        <label 
-          for="nome-tarefa" 
-          class="control-label"
-          >Nome da Tarefa
-        </label>
-        <input 
-          type="textarea" 
-          class="form-control" 
-          id="descr-tarefa" 
-          placeholder="Descrição da Tarefa"
-        >
+          <label 
+            for="data-limite" 
+            class="control-label mt-3"
+            >Data Limite
+          </label> 
+          <input 
+            type="date" 
+            class="form-control"
+            name="limite"
+            ngModel
+            required
+          >       
       
-        <label 
-          for="data-limite" 
-          class="control-label mt-3"
-          >Data Limite
-        </label> 
-        <input 
-          type="data" 
-          class="form-control"
-        >       
-    
-        <div class="row justify-content-center mt-3">
-          <div class="col-sm-4">
-            <a routerLink="''" routerLinkActive="router-link-active"  class="btn btn-block btn-secondary">Go Back</a>
+          <div class="row justify-content-center mt-3">
+            <div class="col-sm-4">
+              <a 
+                routerLink="/" 
+                routerLinkActive="router-link-active"  
+                class="btn btn-block btn-secondary"
+                >Voltar
+              </a>
+            </div>
+            <div class="col-sm-4">
+              <button 
+                class="btn btn-block btn-primary" 
+                type="submit"
+                [disabled]="!form.valid"
+                >Salvar Tarefa
+              </button>
+            </div>
           </div>
-          <div class="col-sm-4">
-            <button 
-              class="btn btn-block btn-primary" 
-              type="submit"
-              >Save Task
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+    </div>
   </div>
 </div>
