@@ -6,28 +6,28 @@ import { Tarefa } from '../models/tarefa.model';
   providedIn: 'root'
 })
 export class TarefasService {
-
+  
+  private readonly url = 'https://todo-list-ng-ed8aa.firebaseio.com/tarefas';
+  
   constructor(private http: HttpClient) { }
 
-  readonly url = 'https://todo-list-ng-ed8aa.firebaseio.com/tarefas.json';
-
   postTarefa(tarefa: Tarefa) {
-    return this.http.post<Tarefa>(this.url, tarefa);
+    return this.http.post<Tarefa>(`${this.url}.json`, tarefa);
   }
 
-  putTarefa(tarefa: Tarefa) {
-    return this.http.put<Tarefa>(this.url + tarefa.id, tarefa);
+  putTarefa(tarefa: Tarefa, id: string) {
+    return this.http.put<Tarefa>(`${this.url}/${id}.json`, tarefa);
   }
 
   getTarefas() {
-    return this.http.get<Tarefa[]>(this.url);
+    return this.http.get<Tarefa[]>(`${this.url}.json`);
   }
 
-  getTarefa(id: number) {
-    return this.http.get<Tarefa>(this.url + id);
+  getTarefa(id: string) {
+    return this.http.get<Tarefa>(`${this.url}/${id}.json`);
   }
   
-  deleteTarefa(id: number) {
-    return this.http.delete<Tarefa>(this.url + id); 
+  deleteTarefa(id: string) {
+    return this.http.delete<Tarefa>(`${this.url}/${id}.json`); 
   }
 }
