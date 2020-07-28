@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a routerLink="/" routerLinkActive="router-link-active">
     <img 
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Icon-notepad.svg/1024px-Icon-notepad.svg.png" 
@@ -10,5 +10,36 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/" routerLinkActive="router-link-active">Home<span class="sr-only">(current)</span></a>
     </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a routerLink="/" routerLinkActive="router-link-active">
+    <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Icon-notepad.svg/1024px-Icon-notepad.svg.png" 
+    alt=""
+    style="width: 35px; height: 35px"
+    >
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" routerLink="/" routerLinkActive="router-link-active">Home<span class="sr-only">(current)</span></a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Não sei o nome disso
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="nova-tarefa" routerLinkActive="router-link-active">Nova Tarefa</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
