@@ -1,50 +1,18 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-sm-4">
+    <div class="col-sm-2">
       <button class="btn btn-block btn-primary w-75" (click)="onClickIncompletas()">Incompletas</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
       <button class="btn btn-block btn-success w-75" (click)="onClickCompletas()">Completas</button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
       <button class="btn btn-block btn-secondary w-75" routerLink="nova-tarefa" routerLinkActive="router-link-active">Nova Tarefa</button>
     </div>
   </div>
-  <div class="mt-3" *ngIf="isLoading" style="text-align: center;">
-    <app-loading-spinner></app-loading-spinner>
-  </div>
-  <div class="row" *ngIf="!isLoading">
+  <div class="row">
     <div class="col-sm-12">
-      <ng-container *ngFor="let tarefa of tarefas">
-        <ng-container *ngIf="verIncompletas !== tarefa.status">
-          <hr>
-          <h3>{{tarefa.nome}}<small> | {{tarefa.dataCriacao | date: 'dd/MM/yyyy'}}</small></h3>
-          <p>
-            {{tarefa.descricao}} 
-          </p>
-          <h4>Data limite: <small>{{tarefa.limite | date: 'dd/MM/yyyy'}}</small></h4>
-          <a  
-            class="btn btn-sm btn-primary"
-            routerLink="editar-tarefa" routerLinkActive="router-link-active"
-            (click)="navigationService.navigate('editar-tarefa/', tarefa.id)">
-            Editar
-          </a> | 
-          <button 
-            type="submit"
-            class="btn btn-sm btn-danger"
-            (click)="onDeleteTarefa(tarefa.id)">
-            Apagar
-          </button>
-          | Status:
-          <input 
-            type="checkbox"
-            value="tarefa.status"
-            [(ngModel)]="tarefa.status"
-            (change)="onChangeStatus(tarefa.id)"
-          >
-          <hr>
-        </ng-container>
-      </ng-container>
+      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
     </div>
   </div>
 </div>

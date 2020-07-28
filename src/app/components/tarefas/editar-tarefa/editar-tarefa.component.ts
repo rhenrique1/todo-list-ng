@@ -31,7 +31,6 @@ export class EditarTarefaComponent implements OnInit {
       .subscribe(
         res => {
           this.tarefa = res;
-          console.log(res);
           this.isLoading = false;
         }, err => {
           console.log(err);
@@ -43,7 +42,6 @@ export class EditarTarefaComponent implements OnInit {
     this.tarefa.descricao = formTarefa.value.descricao;
     this.tarefa.limite = formTarefa.value.limite;
     this.tarefa.nome = formTarefa.value.nome;
-    console.log(this.tarefa);
 
     this.tarefasService.putTarefa(this.tarefa, this.tarefaId)
       .subscribe(

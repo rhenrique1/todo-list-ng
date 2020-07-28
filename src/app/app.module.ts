@@ -10,6 +10,7 @@ import { NovaTarefaComponent } from './components/tarefas/nova-tarefa/nova-taref
 import { EditarTarefaComponent } from './components/tarefas/editar-tarefa/editar-tarefa.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ItemTarefaComponent } from './components/tarefas/item-tarefa/item-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     NavBarComponent,
     NovaTarefaComponent,
     EditarTarefaComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ItemTarefaComponent
   ],
   imports: [
     BrowserModule,
