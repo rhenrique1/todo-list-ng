@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class NovaTarefaComponent implements OnInit {
 
   public tarefa: Tarefa;
+  public confirmar: boolean = false;
+  public formTarefa: NgForm;
 
   constructor(private tarefasService: TarefasService,
     private router: Router) { }
@@ -19,7 +21,7 @@ export class NovaTarefaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSalvarTarefa(formTarefa: NgForm) {
+  salvarTarefa(formTarefa: NgForm) {
     this.tarefa = formTarefa.value;
     this.tarefa.dataCriacao = new Date();
     this.tarefa.status = false;
@@ -34,5 +36,17 @@ export class NovaTarefaComponent implements OnInit {
         this.router.navigate(['/']);
       }
     )
+  }
+
+  onSalvar(formTarefa: NgForm) {
+    this.formTarefa = formTarefa;
+    this.confirmar = true;
+  }
+
+  onCloseConfirmacao(bool: any) {
+    this.confirmar = false;
+    if(bool) {
+      this.salvarTarefa(this.formTarefa);
+    }
   }
 }

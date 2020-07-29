@@ -41,7 +41,6 @@ export class ItemTarefaComponent implements OnInit {
     .subscribe(
       res => {
         this.tarefas = res;
-
         this.isLoading = false;
       }, err => {
         console.log(err);
@@ -74,30 +73,26 @@ export class ItemTarefaComponent implements OnInit {
   }
 
   alterarStatus(id: string) {
-    let tarefa = this.tarefas.find(tarefa => tarefa.id = id);
+    let tarefa = this.tarefas.find(tarefa => tarefa.id === id);
     tarefa.status = !tarefa.status;
+
     this.tarefasService.putTarefa(tarefa, id)
       .subscribe(
         res => {
-          console.log(res);
-          this.isLoading = true;
           this.initTarefas();
         }, err => {
           console.log(err);
-          this.isLoading = true;
           this.initTarefas();
         })
   }
 
   onCloseConfirmacao(bool: any) {
+    this.confirmar = false;
     if(bool && this.mensagem === `Alterar status da tarefa?`) {
-      this.confirmar = false;
       this.alterarStatus(this.idAlteracao);
     } else if(bool && this.mensagem === `Deletar tarefa?`) {
-      this.confirmar = false;
       this.apagarTarefa(this.idAlteracao);
     } 
-    this.confirmar = false;
   }
   /*
   comparando datas

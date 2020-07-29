@@ -1,9 +1,10 @@
+<app-alert *ngIf="confirmar" [message]="'Criar nova tarefa?'" (close)="onCloseConfirmacao($event)"></app-alert>
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-10">
       <h1>Nova Tarefa</h1>
       <hr>  
-        <form #form="ngForm" autocomplete="off" (ngSubmit)="onSalvarTarefa(form)">
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="onSalvar(form)">
           <label 
             for="nome-tarefa" 
             class="control-label mt-3"
