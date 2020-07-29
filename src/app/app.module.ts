@@ -11,6 +11,7 @@ import { EditarTarefaComponent } from './components/tarefas/editar-tarefa/editar
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ItemTarefaComponent } from './components/tarefas/item-tarefa/item-tarefa.component';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ItemTarefaComponent } from './components/tarefas/item-tarefa/item-taref
     NovaTarefaComponent,
     EditarTarefaComponent,
     LoadingSpinnerComponent,
-    ItemTarefaComponent
+    ItemTarefaComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
