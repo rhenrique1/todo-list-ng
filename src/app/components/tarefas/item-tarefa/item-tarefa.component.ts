@@ -52,7 +52,7 @@ export class ItemTarefaComponent implements OnInit {
     this.tarefasService.deleteTarefa(id)
       .subscribe(
         res => {
-          console.log('Deletado com sucesso');
+          console.log(`Deletado com sucesso`);
           this.initTarefas();
         }, err => {
           console.log(err);
