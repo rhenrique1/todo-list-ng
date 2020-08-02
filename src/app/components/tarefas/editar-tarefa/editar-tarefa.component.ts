@@ -12,8 +12,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class EditarTarefaComponent implements OnInit {
 
   public isLoading: boolean = true;
+  public confirmar: boolean = false;
   public tarefa: Tarefa;
   public tarefaId: string;
+  public formTarefa: NgForm;
 
   constructor(private tarefasService: TarefasService,
     private activatedRoute: ActivatedRoute,
@@ -38,7 +40,19 @@ export class EditarTarefaComponent implements OnInit {
       })
   }
 
-  onSalvarTarefa(formTarefa: NgForm) {
+  onSalvar(formTarefa: NgForm) {
+    this.formTarefa = formTarefa;
+    this.confirmar = true;
+  }
+
+  onCloseConfirmacao(bool: any) {
+    this.confirmar = false;
+    if(bool) {
+      this.salvarTarefa(this.formTarefa);
+    }
+  }
+
+  salvarTarefa(formTarefa: NgForm) {
     this.tarefa.descricao = formTarefa.value.descricao;
     this.tarefa.limite = formTarefa.value.limite;
     this.tarefa.nome = formTarefa.value.nome;

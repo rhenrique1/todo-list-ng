@@ -1,8 +1,12 @@
 <div class="backdrop" (click)="onClose()"></div>
 <div class="alert-box">
-  <p>{{ message }}</p>
+  <button type="button" class="close" aria-label="Close" (click)="onClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <p class="mensagem">{{ message }}</p>
+  <hr>
   <div class="alert-box-actions">
-    <button class="btn btn-primary w-30" (click)="onConfirmar()">Sim</button> |
-    <button class="btn btn-danger w-30" (click)="onClose()">Não</button>
+    <button class="btn btn-secondary w-30" (click)="onClose()">Não</button> | 
+    <button class="btn btn-primary w-30" (click)="onConfirmar()">Sim</button> 
   </div>
-</div>
+</div>  

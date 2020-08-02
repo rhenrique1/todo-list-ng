@@ -1,77 +1,86 @@
-<div *ngIf="isLoading" style="text-align: center;">
-  <app-loading-spinner></app-loading-spinner>
-</div>
-<div class="container mt-3">
+<app-alert *ngIf="confirmar" [message]="'Alterar tarefa?'" (close)="onCloseConfirmacao($event)"></app-alert>
+<div class="container">
   <div class="row">
-    <div class="col-sm-10">
-      <ng-container *ngIf="!isLoading">
-        <h1>Editar Tarefa</h1>
-        <hr>
-          <form #form="ngForm" autocomplete="off" (ngSubmit)="onSalvarTarefa(form)">
-            <label 
-              for="nome-tarefa" 
-              class="control-label mt-3"
-              >Nome da Tarefa
-            </label>
-            <input 
-              type="text" 
-              class="form-control" 
-              id="nome-tarefa" 
-              name="nome"
-              #name="ngModel"
-              [(ngModel)]="tarefa.nome"
-              required
-            >
+    <div class="offset-2 col-md-8">
+      <h1 class="pt-5 text-left fs-48"><strong>Editar Tarefa</strong></h1>
+      <hr>
+      <div class="row mt-10">
+        <div class="col-sm-12">
+          <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+          </div>
+          <ng-container *ngIf="!isLoading">
+            <form #form="ngForm" autocomplete="off" (ngSubmit)="onSalvar(form)">
+              <div class="form-group">
+                <label 
+                  for="nome-tarefa" 
+                  class="control-label mt-2 d-block"
+                  >Nome da tarefa
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="nome-tarefa" 
+                  name="nome"
+                  #name="ngModel"
+                  [(ngModel)]="tarefa.nome"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label 
+                  for="nome-tarefa" 
+                  class="control-label mt-2 d-block"
+                  >Descrição da tarefa
+                </label>
+                <textarea 
+                  type="textarea" 
+                  class="form-control" 
+                  id="descr-tarefa" 
+                  name="descricao"
+                  #descricao="ngModel"
+                  [(ngModel)]="tarefa.descricao"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label 
+                  for="data-limite" 
+                  class="control-label mt-2 d-block"
+                  >Data limite
+                </label> 
+                <input 
+                  type="date" 
+                  class="form-control"
+                  name="limite"
+                  #limite="ngModel"
+                  [(ngModel)]="tarefa.limite"
+                  required
+                >       
+              </div>
             
-            <label 
-              for="nome-tarefa" 
-              class="control-label mt-3"
-              >Descrição da Tarefa
-            </label>
-            <textarea 
-              type="textarea" 
-              class="form-control" 
-              id="descr-tarefa" 
-              name="descricao"
-              #descricao="ngModel"
-              [(ngModel)]="tarefa.descricao"
-              required
-            ></textarea>
-          
-            <label 
-              for="data-limite" 
-              class="control-label mt-3"
-              >Data Limite
-            </label> 
-            <input 
-              type="date" 
-              class="form-control"
-              name="limite"
-              #limite="ngModel"
-              [(ngModel)]="tarefa.limite"
-              required
-            >       
-        
-            <div class="row justify-content-md-end mt-3">
-              <div class="col-sm-2">
-                <button 
-                  routerLink="/" 
-                  routerLinkActive="router-link-active" 
-                  class="btn btn-block btn-danger"
-                  >Voltar
-                </button>
+              <div class="row justify-content-md-end mt-3">
+                <div class="col-sm-3">
+                  <button 
+                    routerLink="/" 
+                    routerLinkActive="router-link-active" 
+                    class="btn btn-block btn-danger"
+                    >Voltar
+                  </button>
+                </div>
+                <div class="col-sm-3">
+                  <button 
+                    class="btn btn-block btn-success" 
+                    type="submit"
+                    [disabled]="!form.valid"
+                    >Salvar Tarefa
+                  </button>
+                </div>
               </div>
-              <div class="col-sm-2">
-                <button 
-                  class="btn btn-block btn-success" 
-                  type="submit"
-                  [disabled]="!form.valid"
-                  >Salvar Tarefa
-                </button>
-              </div>
-            </div>
-          </form>
-      </ng-container>
+            </form>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </div>
