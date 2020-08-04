@@ -67,7 +67,7 @@ export class ItemTarefaComponent implements OnInit {
   }
 
   onApagarTarefa(id: string) {
-    this.mensagem = `Deletar tarefa?`; 
+    this.mensagem = `Apagar tarefa?`; 
     this.confirmar = true;
     this.idAlteracao = id;
   }
@@ -86,17 +86,19 @@ export class ItemTarefaComponent implements OnInit {
         })
   }
 
-  onCloseConfirmacao(bool: any) {
+  onCloseConfirmacao(bool: boolean) {
     this.confirmar = false;
     if(bool && this.mensagem === `Alterar status da tarefa?`) {
       this.alterarStatus(this.idAlteracao);
-    } else if(bool && this.mensagem === `Deletar tarefa?`) {
+    } else if(bool && this.mensagem === `Apagar tarefa?`) {
       this.apagarTarefa(this.idAlteracao);
     } 
   }
-  /*
-  comparando datas
-  let limite = new Date(this.tarefas[0].limite).toLocaleDateString();
-  console.log(this.testData.toLocaleDateString() < limite);
-  */
+
+  isExpirada(limite: Date) {
+    let dataLimite = new Date(limite).toLocaleDateString();
+    let dataAtual = new Date().toLocaleDateString();
+
+    return (dataLimite < dataAtual); 
+  }
 }

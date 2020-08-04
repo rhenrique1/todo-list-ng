@@ -5,8 +5,10 @@
 <ng-container *ngFor="let tarefa of tarefas;let index=index">
   <ng-container *ngIf="verIncompletas !== tarefa.status && !isLoading">
     <div class="overflow-hidden">
-      <h3 class="d-inline float-left"> {{tarefa.nome}}</h3>
-      <h4 class="d-inline float-right">Até: <small>{{tarefa.limite | date: 'dd/MM/yyyy'}} - {{tarefa.limite | date: 'HH:mm'}}h</small></h4>
+      <h3 class="d-inline float-left">{{tarefa.nome}}</h3>
+      <h4 class="d-inline float-right">
+        Até: <small [ngStyle]="{'color': isExpirada(tarefa.limite) ? 'red' : 'black'}">{{tarefa.limite | date: 'dd/MM/yyyy'}} - {{tarefa.limite | date: 'HH:mm'}}h</small>
+      </h4>
     </div>
     <div class="text-left">
       <a class="bt-icon" (click)="onApagarTarefa(tarefa.id)">
