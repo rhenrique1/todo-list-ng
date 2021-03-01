@@ -9,6 +9,7 @@ import { NavigationService } from '../../shared/services/utils/navigation.servic
 export class HomeComponent implements OnInit {
 
   public verIncompletas: boolean = true;
+  public categoriaTarefas: string = 'Iniciadas';
   
   constructor(public navigationService: NavigationService) { }
 
@@ -16,10 +17,12 @@ export class HomeComponent implements OnInit {
   }
 
   onClickIncompletas() {
+    this.categoriaTarefas = 'Iniciadas';
     this.verIncompletas = true;
   }
 
   onClickCompletas() {
+    this.categoriaTarefas = 'Finalizadas';
     this.verIncompletas = false;
   }
 }

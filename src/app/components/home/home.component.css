@@ -5,9 +5,10 @@
 #tabelaTarefas {
   padding-top: 24px;
   opacity: 98%;
+  width: 100%;
 }
 
-#botoes {
+#areaBotoes {
   position: center;
   align-items: center;
   background-color: whitesmoke;
@@ -15,4 +16,9 @@
   width: 440px;
   opacity: 98%;
   border: 1px solid black;
+}
+
+#botoes {
+  position: center;
+  align-self: center;
 }

@@ -1,18 +1,28 @@
 <div class="container mt-4"> 
-  <div class="row rounded mx-auto" id="botoes">
+  <!-- <div class="row rounded mx-auto" id="areaBotoes">
     <div class="col-sm-4">
-      <button class="btn btn-primary w-100" (click)="onClickIncompletas()">Incompletas</button>
+      <button class="btn btn-secondary w-100" (click)="onClickIncompletas()">Iniciadas</button>
     </div>
     <div class="col-sm-4">
-      <button class="btn btn-success w-100" (click)="onClickCompletas()">Completas</button>
+      <button class="btn btn-secondary w-100" (click)="onClickCompletas()">Finalizadas</button>
     </div>
     <div class="col-sm-4">
       <button class="btn btn-secondary w-100" routerLink="nova-tarefa" routerLinkActive="router-link-active">Nova Tarefa</button>
     </div>
-  </div>
-  <div class="row justify-content-center" id="tabelaTarefas">
-    <div class="col-sm-8 border border-secondary rounded" style="background-color: white">
-      <h1 class="text-left fs-32 pt-3"><strong>Tarefas</strong></h1>
+  </div> -->
+  <div class="row justify-content-center col-xs-12" id="tabelaTarefas">
+    <div class="col-sm border border-secondary bg-light ml-4">
+      <h1 class="text-left fs-24 pt-3 text-muted">A Fazer</h1>
+      <hr>
+      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
+    </div>
+    <div class="col-sm border border-secondary bg-light ml-4">
+      <h1 class="text-left fs-24 pt-3 text-muted">Em Progresso</h1>
+      <hr>
+      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
+    </div>
+    <div class="col-sm border border-secondary bg-light ml-4">
+      <h1 class="text-left fs-24 pt-3 text-muted">Concluído</h1>
       <hr>
       <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
     </div>
