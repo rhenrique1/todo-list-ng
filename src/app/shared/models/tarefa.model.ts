@@ -4,5 +4,5 @@ export interface Tarefa {
   descricao: string;
   dataCriacao: Date;
   limite: Date;
-  status: boolean;
+  status: number;
 }

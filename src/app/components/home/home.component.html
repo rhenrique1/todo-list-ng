@@ -12,19 +12,19 @@
   </div> -->
   <div class="row justify-content-center col-xs-12" id="tabelaTarefas">
     <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">A Fazer</h1>
+      <h1 class="text-left fs-24 pt-3">A FAZER</h1>
       <hr>
-      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
+      <app-item-tarefa [statusTarefa]="1"></app-item-tarefa>
     </div>
     <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">Em Progresso</h1>
+      <h1 class="text-left fs-24 pt-3">EM PROGRESSO</h1>
       <hr>
-      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
+      <app-item-tarefa [statusTarefa]="2"></app-item-tarefa>
     </div>
     <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">Concluído</h1>
+      <h1 class="text-left fs-24 pt-3">CONCLUÍDO</h1>
       <hr>
-      <app-item-tarefa [verIncompletas]="verIncompletas"></app-item-tarefa>
+      <app-item-tarefa [statusTarefa]="3"></app-item-tarefa>
     </div>
   </div>
 </div>

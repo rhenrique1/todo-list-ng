@@ -16,7 +16,7 @@ export class ItemTarefaComponent implements OnInit {
   public confirmar: boolean = false;
   public idAlteracao: string = '';
   public mensagem: string = '';
-  @Input() public verIncompletas: boolean;
+  @Input() public statusTarefa: number;
 
   constructor(private tarefasService: TarefasService,
     public navigationService: NavigationService) { }
@@ -52,7 +52,7 @@ export class ItemTarefaComponent implements OnInit {
     this.tarefasService.deleteTarefa(id)
       .subscribe(
         res => {
-          console.log(`Deletado com sucesso`);
+          console.log('Deletado com sucesso');
           this.initTarefas();
         }, err => {
           console.log(err);
@@ -61,38 +61,38 @@ export class ItemTarefaComponent implements OnInit {
   }
 
   onAlterarStatus(id: string) {
-    this.mensagem = `Alterar status da tarefa?`; 
+    this.mensagem = 'Alterar status da tarefa?'; 
     this.confirmar = true;
     this.idAlteracao = id;
   }
 
   onApagarTarefa(id: string) {
-    this.mensagem = `Apagar tarefa?`; 
+    this.mensagem = 'Apagar tarefa?'; 
     this.confirmar = true;
     this.idAlteracao = id;
   }
 
   alterarStatus(id: string) {
     let tarefa = this.tarefas.find(tarefa => tarefa.id === id);
-    tarefa.status = !tarefa.status;
 
-    this.tarefasService.putTarefa(tarefa, id)
-      .subscribe(
-        res => {
-          this.initTarefas();
-        }, err => {
-          console.log(err);
-          this.initTarefas();
-        })
+    if (tarefa.status === 3) {
+      if (confirm('Reabrir tarefa?')) {
+        tarefa.status = 1;
+        this.atualizarTarefa(tarefa, id);
+      }
+    } else {
+      tarefa.status += 1;
+      this.atualizarTarefa(tarefa, id);
+    }
   }
 
   onCloseConfirmacao(bool: boolean) {
     this.confirmar = false;
-    if(bool && this.mensagem === `Alterar status da tarefa?`) {
+    if(bool && this.mensagem === 'Alterar status da tarefa?') {
       this.alterarStatus(this.idAlteracao);
-    } else if(bool && this.mensagem === `Apagar tarefa?`) {
+    } else if(bool && this.mensagem === 'Apagar tarefa?') {
       this.apagarTarefa(this.idAlteracao);
-    } 
+    }
   }
 
   isExpirada(limite: Date) {
@@ -100,5 +100,16 @@ export class ItemTarefaComponent implements OnInit {
     let dataAtual = new Date().toLocaleDateString();
 
     return (dataLimite < dataAtual); 
+  }
+
+  atualizarTarefa(tarefa: Tarefa, id: string) {
+    this.tarefasService.putTarefa(tarefa, id)
+    .subscribe(
+      res => {
+        this.initTarefas();
+      }, err => {
+        console.log(err);
+        this.initTarefas();
+      })
   }
 }
