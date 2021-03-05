@@ -5,11 +5,11 @@ import { map } from 'rxjs/operators';
 import { Tarefa } from 'src/app/shared/models/tarefa.model';
 
 @Component({
-  selector: 'app-item-tarefa',
-  templateUrl: './item-tarefa.component.html',
-  styleUrls: ['./item-tarefa.component.css']
+  selector: 'app-item-tarefa-progresso',
+  templateUrl: './item-tarefa-progresso.component.html',
+  styleUrls: ['./item-tarefa-progresso.component.css']
 })
-export class ItemTarefaComponent implements OnInit {
+export class ItemTarefaProgressoComponent implements OnInit {
 
   public confirmar: boolean = false;
   public idAlteracao: string = '';
@@ -22,10 +22,8 @@ export class ItemTarefaComponent implements OnInit {
   constructor(private tarefasService: TarefasService,
     public navigationService: NavigationService) { }
 
-  ngOnInit(): void {
-  }
-
-  apagarTarefa(id: string) {
+  ngOnInit(): void {}
+    apagarTarefa(id: string) {
     this.tarefasService.deleteTarefa(id)
       .subscribe(
         res => {

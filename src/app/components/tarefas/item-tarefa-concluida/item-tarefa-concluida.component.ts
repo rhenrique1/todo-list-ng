@@ -5,16 +5,16 @@ import { map } from 'rxjs/operators';
 import { Tarefa } from 'src/app/shared/models/tarefa.model';
 
 @Component({
-  selector: 'app-item-tarefa',
-  templateUrl: './item-tarefa.component.html',
-  styleUrls: ['./item-tarefa.component.css']
+  selector: 'app-item-tarefa-concluida',
+  templateUrl: './item-tarefa-concluida.component.html',
+  styleUrls: ['./item-tarefa-concluida.component.css']
 })
-export class ItemTarefaComponent implements OnInit {
+export class ItemTarefaConcluidaComponent implements OnInit {
 
   public confirmar: boolean = false;
   public idAlteracao: string = '';
   public mensagem: string = '';
-  @Input() public tarefas: Tarefa[];
+  @Input() public tarefas: Tarefa[]
   @Input() public statusTarefa: number;
   @Input() public atualizar: false;
   @Output() atualizarProx = new EventEmitter<boolean>();

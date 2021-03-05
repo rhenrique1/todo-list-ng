@@ -1,30 +1,24 @@
 <div class="container mt-4"> 
-  <!-- <div class="row rounded mx-auto" id="areaBotoes">
-    <div class="col-sm-4">
-      <button class="btn btn-secondary w-100" (click)="onClickIncompletas()">Iniciadas</button>
-    </div>
-    <div class="col-sm-4">
-      <button class="btn btn-secondary w-100" (click)="onClickCompletas()">Finalizadas</button>
-    </div>
-    <div class="col-sm-4">
-      <button class="btn btn-secondary w-100" routerLink="nova-tarefa" routerLinkActive="router-link-active">Nova Tarefa</button>
-    </div>
-  </div> -->
   <div class="row justify-content-center col-xs-12" id="tabelaTarefas">
-    <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">A FAZER</h1>
-      <hr>
-      <app-item-tarefa [statusTarefa]="1"></app-item-tarefa>
+    <div class="mt-3 text-center" *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
     </div>
-    <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">EM PROGRESSO</h1>
-      <hr>
-      <app-item-tarefa [statusTarefa]="2"></app-item-tarefa>
-    </div>
-    <div class="col-sm border border-secondary bg-light ml-4">
-      <h1 class="text-left fs-24 pt-3">CONCLUÍDO</h1>
-      <hr>
-      <app-item-tarefa [statusTarefa]="3"></app-item-tarefa>
-    </div>
+    <ng-container *ngIf="!isLoading">
+      <div class="col-sm rounded bg-light ml-4">
+        <h1 class="text-left fs-20 pt-3">A FAZER</h1>
+        <hr>
+        <app-item-tarefa [tarefas]="tarefas"></app-item-tarefa>
+      </div>
+      <div class="col-sm rounded bg-light ml-4">
+        <h1 class="text-left fs-20 pt-3">EM PROGRESSO</h1>
+        <hr>
+        <app-item-tarefa-progresso [tarefas]="tarefas"></app-item-tarefa-progresso>
+      </div>
+      <div class="col-sm rounded bg-light ml-4">
+        <h1 class="text-left fs-20 pt-3">CONCLUÍDO</h1>
+        <hr>
+        <app-item-tarefa-concluida [tarefas]="tarefas"></app-item-tarefa-concluida>
+      </div>
+    </ng-container>
   </div>
 </div>
