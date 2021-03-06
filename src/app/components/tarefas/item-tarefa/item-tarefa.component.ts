@@ -19,8 +19,10 @@ export class ItemTarefaComponent implements OnInit {
   @Input() public atualizar: false;
   @Output() atualizarProx = new EventEmitter<boolean>();
 
-  constructor(private tarefasService: TarefasService,
-    public navigationService: NavigationService) { }
+  constructor (
+    private tarefasService: TarefasService,
+    public navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
   }
