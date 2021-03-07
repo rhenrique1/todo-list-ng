@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class ItemTarefaComponent implements OnInit {
   public isLoading: boolean = false;
   public confirmar: boolean = false;
-  public idAlteracao: string = '';
+  public idAlteracao: number;
   public mensagem: string = '';
   // @Input() 
   public tarefas: Tarefa[];
@@ -31,17 +31,6 @@ export class ItemTarefaComponent implements OnInit {
   initTarefas() {
     this.isLoading = true;
     this.tarefasService.getTarefas()
-    .pipe(
-      map(res => {
-        const tarefasArray = [];
-        for (const key in res) {
-          if (res.hasOwnProperty(key)) {
-            tarefasArray.push({ ...res[key] , id: key})
-          }
-        }
-        return tarefasArray;
-      })
-    )
     .subscribe(
       res => {
         this.tarefas = res;
@@ -52,36 +41,38 @@ export class ItemTarefaComponent implements OnInit {
       })
   }
 
-  apagarTarefa(id: string) {
+  apagarTarefa(id: number) {
     this.tarefasService.deleteTarefa(id)
       .subscribe(
         res => {
+          this.recarregar.emit(true);
           this.initTarefas();
         }, err => {
+          this.recarregar.emit(true);
           this.initTarefas();
         })
   }
 
-  onAlterarStatus(id: string) {
+  onAlterarStatus(id: number) {
     this.mensagem = 'Alterar status da tarefa?'; 
     this.confirmar = true;
     this.idAlteracao = id;
   }
 
-  onApagarTarefa(id: string) {
+  onApagarTarefa(id: number) {
     this.mensagem = 'Apagar tarefa?'; 
     this.confirmar = true;
     this.idAlteracao = id;
   }
 
-  alterarStatus(id: string) {
+  alterarStatus(id: number) {
     let tarefa = this.tarefas.find(tarefa => tarefa.id === id);
     if (tarefa.status === 2) {
       tarefa.status = 0;
-      this.atualizarTarefa(tarefa, id);
+      this.atualizarTarefa(tarefa);
     } else {
       tarefa.status++;
-      this.atualizarTarefa(tarefa, id);
+      this.atualizarTarefa(tarefa);
     }
   }
 
@@ -103,12 +94,13 @@ export class ItemTarefaComponent implements OnInit {
     return (dataLimite < dataAtual); 
   }
 
-  atualizarTarefa(tarefa: Tarefa, id: string) {
-    this.tarefasService.putTarefa(tarefa, id)
+  atualizarTarefa(tarefa: Tarefa) {
+    this.tarefasService.putTarefa(tarefa)
     .subscribe(
       res => {
-        console.log(res);
+        this.initTarefas();
       }, err => {
+        this.initTarefas();
         console.log(err);
       })
   }

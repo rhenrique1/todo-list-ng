@@ -14,7 +14,7 @@ export class EditarTarefaComponent implements OnInit {
   public isLoading: boolean = true;
   public confirmar: boolean = false;
   public tarefa: Tarefa;
-  public tarefaId: string;
+  public tarefaId: number;
   public formTarefa: NgForm;
 
   constructor(private tarefasService: TarefasService,
@@ -57,7 +57,7 @@ export class EditarTarefaComponent implements OnInit {
     this.tarefa.limite = formTarefa.value.limite;
     this.tarefa.nome = formTarefa.value.nome;
 
-    this.tarefasService.putTarefa(this.tarefa, this.tarefaId)
+    this.tarefasService.putTarefa(this.tarefa)
       .subscribe(
         res => {
           console.log(res);

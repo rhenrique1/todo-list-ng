@@ -25,17 +25,6 @@ export class HomeComponent implements OnInit {
   initTarefas() {
     this.isLoading = true;
     this.tarefasService.getTarefas()
-    .pipe(
-      map(res => {
-        const tarefasArray = [];
-        for (const key in res) {
-          if (res.hasOwnProperty(key)) {
-            tarefasArray.push({ ...res[key] , id: key})
-          }
-        }
-        return tarefasArray;
-      })
-    )
     .subscribe(
       res => {
         this.tarefas = res;
