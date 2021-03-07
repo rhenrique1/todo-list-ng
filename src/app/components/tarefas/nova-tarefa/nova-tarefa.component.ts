@@ -24,7 +24,7 @@ export class NovaTarefaComponent implements OnInit {
   salvarTarefa(formTarefa: NgForm) {
     this.tarefa = formTarefa.value;
     this.tarefa.dataCriacao = new Date();
-    this.tarefa.status = 1;
+    this.tarefa.status = 0;
 
     console.log(this.tarefa);
     this.tarefasService.postTarefa(this.tarefa).subscribe(

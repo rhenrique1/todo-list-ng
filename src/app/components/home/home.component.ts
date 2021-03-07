@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Tarefa } from 'src/app/shared/models/tarefa.model';
 import { TarefasService } from 'src/app/shared/services/tarefas.service';
@@ -12,7 +12,7 @@ import { NavigationService } from '../../shared/services/utils/navigation.servic
 
 export class HomeComponent implements OnInit {
 
-  public isLoading: boolean = true;
+  public isLoading: boolean = false;
   public tarefas: Tarefa[] = []; 
 
   constructor (
@@ -20,9 +20,7 @@ export class HomeComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
-  ngOnInit(): void {
-    this.initTarefas();
-  }
+  ngOnInit(): void {}
 
   initTarefas() {
     this.isLoading = true;

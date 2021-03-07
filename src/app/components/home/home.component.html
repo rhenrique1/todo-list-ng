@@ -7,17 +7,17 @@
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">A FAZER</h1>
         <hr>
-        <app-item-tarefa [tarefas]="tarefas"></app-item-tarefa>
+        <app-item-tarefa [statusTarefa]="0" (recarregar)="initTarefas()"></app-item-tarefa>
       </div>
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">EM PROGRESSO</h1>
         <hr>
-        <app-item-tarefa-progresso [tarefas]="tarefas"></app-item-tarefa-progresso>
+        <app-item-tarefa [statusTarefa]="1" (recarregar)="initTarefas()"></app-item-tarefa>
       </div>
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">CONCLUÍDO</h1>
         <hr>
-        <app-item-tarefa-concluida [tarefas]="tarefas"></app-item-tarefa-concluida>
+        <app-item-tarefa [statusTarefa]="2" (recarregar)="initTarefas()"></app-item-tarefa>
       </div>
     </ng-container>
   </div>

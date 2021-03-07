@@ -12,8 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ItemTarefaComponent } from './components/tarefas/item-tarefa/item-tarefa.component';
 import { AlertComponent } from './shared/alert/alert.component';
-import { ItemTarefaProgressoComponent } from './components/tarefas/item-tarefa-progresso/item-tarefa-progresso.component';
-import { ItemTarefaConcluidaComponent } from './components/tarefas/item-tarefa-concluida/item-tarefa-concluida.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +23,6 @@ import { ItemTarefaConcluidaComponent } from './components/tarefas/item-tarefa-c
     LoadingSpinnerComponent,
     ItemTarefaComponent,
     AlertComponent,
-    ItemTarefaProgressoComponent,
-    ItemTarefaConcluidaComponent
   ],
   imports: [
     BrowserModule,
