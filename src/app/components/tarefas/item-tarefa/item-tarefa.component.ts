@@ -3,6 +3,7 @@ import { NavigationService } from 'src/app/shared/services/utils/navigation.serv
 import { TarefasService } from 'src/app/shared/services/tarefas.service';
 import { Tarefa } from 'src/app/shared/models/tarefa.model';
 import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-item-tarefa',
@@ -10,6 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./item-tarefa.component.css']
 })
 export class ItemTarefaComponent implements OnInit {
+  private _subscription: Subscription;
   public isLoading: boolean = false;
   public confirmar: boolean = false;
   public idAlteracao: number;
@@ -27,10 +29,14 @@ export class ItemTarefaComponent implements OnInit {
   ngOnInit(): void {
     this.initTarefas();
   }
+
+  ngOnDestroy() {
+    this._subscription.unsubscribe();
+  }
   
   initTarefas() {
     this.isLoading = true;
-    this.tarefasService.getTarefas()
+    this._subscription = this.tarefasService.getTarefas()
     .subscribe(
       res => {
         this.tarefas = res;

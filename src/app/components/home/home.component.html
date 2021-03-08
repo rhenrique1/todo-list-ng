@@ -1,23 +1,20 @@
 <div class="container mt-4"> 
   <div class="row justify-content-center col-xs-12" id="tabelaTarefas">
-    <div class="mt-3 text-center" *ngIf="isLoading">
-      <app-loading-spinner></app-loading-spinner>
-    </div>
-    <ng-container *ngIf="!isLoading">
+    <ng-container *ngIf="!isEnabled">
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">A FAZER</h1>
         <hr>
-        <app-item-tarefa [statusTarefa]="0" (recarregar)="initTarefas()"></app-item-tarefa>
+        <app-item-tarefa [statusTarefa]="0" (recarregar)="recarregar()"></app-item-tarefa>
       </div>
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">EM PROGRESSO</h1>
         <hr>
-        <app-item-tarefa [statusTarefa]="1" (recarregar)="initTarefas()"></app-item-tarefa>
+        <app-item-tarefa [statusTarefa]="1" (recarregar)="recarregar()"></app-item-tarefa>
       </div>
       <div class="col-sm rounded bg-light ml-4">
         <h1 class="text-left fs-20 pt-3">CONCLUÍDO</h1>
         <hr>
-        <app-item-tarefa [statusTarefa]="2" (recarregar)="initTarefas()"></app-item-tarefa>
+        <app-item-tarefa [statusTarefa]="2" (recarregar)="recarregar()"></app-item-tarefa>
       </div>
     </ng-container>
   </div>
